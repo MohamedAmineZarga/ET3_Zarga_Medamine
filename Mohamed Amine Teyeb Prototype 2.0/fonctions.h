@@ -1,3 +1,12 @@
+/**
+* @file fonctions.h
+* @brief header
+* @author Mohamed Amine Teyeb
+* @version 2.0
+* @date 11/06/2020
+
+*/
+
 #ifndef fonctions_H_INCLUDED
 #define fonctions_H_INCLUDED
 
@@ -9,28 +18,37 @@
 #include <SDL/SDL_ttf.h>
 #include <stdbool.h>
 typedef struct background background;
+/**
+* @struct background
+* @brief struct for background
+*/
 struct background
 {
-   SDL_Surface* backgroundgame;
-   SDL_Surface* backgroundgame1;
-   SDL_Surface* backgroundmasque;
-   SDL_Rect posmap;
-int w;
-int h;
-bool left  ; 
-bool right; 
+   SDL_Surface* backgroundgame;  /*!<Surface*/
+   SDL_Surface* backgroundgame1;  /*!<Surface*/
+   SDL_Surface* backgroundmasque;  /*!<Surface*/
+   SDL_Rect posmap; /*!<Rectangle*/
+int w; /*!<width*/
+int h; /*!<height*/
+bool left  ;  /*!<test*/
+bool right;  /*!<test*/
 } ;
+/**
+* @struct personnage
+* @brief struct for player
+*/
+
 struct personnage
 {
-    SDL_Surface *bas;
-    SDL_Surface *haut;
-    SDL_Surface *gauche[8];
-    SDL_Surface *droite[8];
-    SDL_Surface *depart;
-    int left,right;
+    SDL_Surface *bas; /*!<Surface*/
+    SDL_Surface *haut; /*!<Surface*/
+    SDL_Surface *gauche[8]; /*!<Surface*/
+    SDL_Surface *droite[8]; /*!<Surface*/
+    SDL_Surface *depart; /*!<Surface*/
+    int left,right; /*!<Surface*/
 
-    SDL_Rect position_joueur;
-SDL_Rect posparback;
+    SDL_Rect position_joueur; /*!<Rectangle*/
+SDL_Rect posparback; /*!<Rectangle*/
 	
 };
 typedef struct personnage pers;

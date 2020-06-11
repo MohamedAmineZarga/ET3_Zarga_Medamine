@@ -1,10 +1,26 @@
+/**
+* @file fonctions.c
+* @brief functions file
+* @author Mohamed Amine Teyeb
+* @version 2.0
+* @date 11/06/2020
+
+*/
+
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <SDL/SDL.h>
 #include "fonctions.h"
 #include <stdbool.h>
 
+/**
+*@brief init the first background
+*@param b1
+*@return none
+*
 
+*/
 void init_background(background *b)
 
 {
@@ -19,6 +35,13 @@ b->backgroundgame->w=2000;
     
 
 }
+/**
+*@brief init the second background
+*@param b
+*@return none
+*
+
+*/
 void init_background2(background *b)
 
 {
@@ -34,7 +57,14 @@ b->backgroundgame->w=2000;
 
 }
 
+/**
+*@brief Blit the first background
+*@param b 
+*@param screen
+*@return none
+*
 
+*/
 
 void affiche_background(background *b,SDL_Surface *screen )
 {
@@ -44,6 +74,14 @@ void affiche_background(background *b,SDL_Surface *screen )
 
 //SDL_Flip(screen);
 }
+/**
+*@brief Blit the second background
+*@param b 
+*@param screen
+*@return none
+*
+
+*/
 void affiche_background1(background *b,SDL_Surface *screen )
 {
 
@@ -52,7 +90,14 @@ void affiche_background1(background *b,SDL_Surface *screen )
 
 
 }
+/**
+*@brief Scrolling
+*@param b 
+*@param screen
+*@return none
+*
 
+*/
 void Scrolling(background *b,SDL_Surface * screen)
 {
 int col=0;
@@ -149,6 +194,14 @@ SDL_Flip(screen);
 
 }
 } 
+/**
+*@brief init the player
+*@param p 
+
+*@return none
+*
+
+*/
 void initialiserperso(pers *p)
 {
 
@@ -185,70 +238,14 @@ p2.position_joueur.y=80;
 }
 
 
-void mouvement(pers p,SDL_Surface *screen)
-{
+/**
+*@brief move the background
+*@param d 
+*@param b
+*@return b
+*
 
-SDL_Event event1;
-int continuer=1;
-int d=0;
- //SDL_EnableKeyRepeat(10,30);
-while(continuer)
-{
-SDL_WaitEvent(&event1);
-switch (event1.type)
-{
-case SDL_QUIT:
-continuer = 0;
-SDL_Quit();
- exit(EXIT_SUCCESS);
-break;
-case SDL_KEYDOWN:
-SDL_PollEvent(&event1);
-switch (event1.key.keysym.sym)
-{
-
- case SDLK_RIGHT :
-                            d=6;
-                            p=boujer(d,p);
-                            //afficherperso(&p, d, ecran);
-				
-                            break;
-
-                        case SDLK_LEFT :
-                            d=4;
-                            p=boujer(d,p);
-                            //afficherperso(&p, d, ecran);
-					
-                            break ;
-
-                        case SDLK_UP :
-                            d=8;
-                            p=boujer(d,p);
-                            //afficherperso(&p, d, ecran);
-					
-                            break ;
-
-                        case SDLK_DOWN :
-                            
-			    d=2;
-                            p=boujer(d,p);
-                            //afficherperso(&p, d, ecran);
-				
-			    break ;
-
-
-
-
-
-break;}
-afficherperso(&p, d, screen);
-}
-SDL_Flip(screen);
-
-
-
-}
-} 
+*/
 
 background boujermap(int d, background b)
 {
@@ -269,6 +266,16 @@ b.left=true;
 
 return b;
 }
+/**
+*@brief move the player
+*@param d 
+*@param p
+*@return p
+*
+
+*/
+
+
 //fonction bouger
 pers boujer(int d, pers p)
 {
@@ -308,6 +315,15 @@ if (p.left==8)
 
 return p;
 }
+/**
+*@brief Blit the player
+*@param p
+*@param d 
+*@param screen
+*@return none
+*
+
+*/
 
 void afficherperso(pers *p,int d,SDL_Surface *screen)
 {
@@ -352,7 +368,13 @@ SDL_Flip(screen);
         p->left=0;
 }
 }
+/**
+*@brief free the surfaces
+*@param p 
+*@return none
+*
 
+*/
 void liberer_surface(pers *p)
 {
     SDL_FreeSurface(p->haut);
@@ -360,7 +382,15 @@ void liberer_surface(pers *p)
     SDL_FreeSurface(p->bas);
     SDL_FreeSurface(p->droite[p->right]);
 }
+/**
+*@brief returns color of  determined pixel (x,y) on a surface
+*@param background_mask
+*@param x
+*@param y
+*@return color
+*
 
+*/
 SDL_Color GetPixel(SDL_Surface *background_mask,int x,int y)
 {
 SDL_Color color;
@@ -372,7 +402,15 @@ memcpy(&col ,pPosition ,background_mask->format->BytesPerPixel);
 SDL_GetRGB(col,background_mask->format, &color.r, &color.g, &color.b);
 return (color);
 }
+/**
+*@brief detect collision of the first player
+*@param background_masque
+*@param Personnage
 
+*@return 1 if collision else 0
+*
+
+*/
 int detectCollPP (SDL_Surface * BackgroundMasque, SDL_Rect *Personnage)
 {
 int X,Y,W,H;
@@ -445,6 +483,16 @@ colgotten = GetPixel (BackgroundMasque, Pos[i].x, Pos[i].y);
 
 return collision;
 }
+/**
+*@brief detect collision of the second player
+*@param background_masque
+*@param Personnage
+
+*@return 1 if collision else 0
+*
+
+*/
+
 int detectCollPP2 (SDL_Surface * BackgroundMasque, SDL_Rect *Personnage)
 {
 int X,Y,W,H;

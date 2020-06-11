@@ -1,3 +1,11 @@
+/**
+* @file main.c
+* @brief main file
+* @author Mohamed Amine Teyeb
+* @version 2.0
+* @date 11/06/2020
+
+*/
 #include <stdlib.h>
 #include <stdio.h>
 #include <SDL/SDL.h>
