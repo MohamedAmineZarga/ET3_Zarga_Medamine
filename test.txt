@@ -1,0 +1,13 @@
+Program received signal SIGSEGV, Segmentation fault.
+0x00007ffff7719edc in TTF_SizeUNICODE ()
+   from /usr/lib/x86_64-linux-gnu/libSDL_ttf-2.0.so.0
+(gdb) where
+#0  0x00007ffff7719edc in TTF_SizeUNICODE ()
+   from /usr/lib/x86_64-linux-gnu/libSDL_ttf-2.0.so.0
+#1  0x00007ffff771b1e8 in TTF_RenderUNICODE_Blended ()
+   from /usr/lib/x86_64-linux-gnu/libSDL_ttf-2.0.so.0
+#2  0x00007ffff771b64a in TTF_RenderText_Blended ()
+   from /usr/lib/x86_64-linux-gnu/libSDL_ttf-2.0.so.0
+#3  0x0000555555555325 in gestion_temps (T=0x7fffffffdc50) at temps.c:63
+#4  0x0000555555555500 in init () at init.c:64
+#5  0x00005555555555c5 in main (argc=1, argv=0x7fffffffde48) at main.c:16
